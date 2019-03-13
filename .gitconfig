@@ -1,0 +1,13 @@
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        br = branch
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        type = cat-file -t
+        dump = cat-file -p
+        cp = cherry-pick
+        showfiles = diff-tree --no-commit-id --name-only -r
+        rc = rebase --continue
+        cf = commit --fixup
+        cpk = cherry-pick
