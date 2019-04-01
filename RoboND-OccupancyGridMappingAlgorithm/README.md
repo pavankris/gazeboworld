@@ -1,5 +1,11 @@
 [![Udacity - Robotics NanoDegree Program](https://s3-us-west-1.amazonaws.com/udacity-robotics/Extra+Images/RoboND_flag.png)](https://www.udacity.com/robotics)
 
+# Inverse sensor model
+![Inverse sensor model](https://user-images.githubusercontent.com/1688726/55329327-5289d580-545c-11e9-8838-1f2771b312f7.png)
+
+# Sensor Fusion
+![Sensor fusion](https://user-images.githubusercontent.com/1688726/55329502-b7ddc680-545c-11e9-9024-8b1c22b47d2b.png)
+
 # RoboND-OccupancyGridMappingAlgorithm
 You will visualize the mapped environment through the generated image
 
