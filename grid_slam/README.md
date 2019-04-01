@@ -20,3 +20,6 @@ rosrun rviz rviz
 
 # To save the map
 rosrun map_server map_saver -f myMap
+
+# Grid based Slam
+![GridSlam](https://user-images.githubusercontent.com/1688726/55355539-9d284380-5496-11e9-9d80-4e8b257e6563.png)
