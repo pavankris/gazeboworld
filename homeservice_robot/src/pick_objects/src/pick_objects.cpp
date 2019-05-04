@@ -20,11 +20,12 @@ int main(int argc, char** argv){
   move_base_msgs::MoveBaseGoal goal;
 
   // set up the frame parameters
-  goal.target_pose.header.frame_id = "base_link";
+  goal.target_pose.header.frame_id = "map";
   goal.target_pose.header.stamp = ros::Time::now();
 
   // Define a position and orientation for the robot to reach
-  goal.target_pose.pose.position.x = -2.893773;
+  goal.target_pose.pose.position.x = -2.21;
+  goal.target_pose.pose.position.y = 1.04;
   goal.target_pose.pose.orientation.w = 1.0;
 
    // Send the goal position and orientation for the robot to reach
@@ -36,12 +37,32 @@ int main(int argc, char** argv){
 
   // Check if the robot reached its goal
   if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-    ROS_INFO("Hooray, the base moved 1 meter forward");
+    ROS_INFO("Hooray, the base moved 2 meter backward");
+  else
+    ROS_INFO("The base failed to move 2 meter backward for some reason");
+
+  // Sleep for1 second
+  ros::Duration(1).sleep();
+
+  goal.target_pose.pose.position.x = -1.03;
+  goal.target_pose.pose.position.y = 3.1;
+
+  ROS_INFO("Sending second goal");
+  ac.sendGoal(goal);
+
+  // Wait an infinite time for the results
+  ac.waitForResult();
+
+  // Check if the robot reached its goal
+  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    ROS_INFO("Hooray, the base moved 1 meter forward again");
   else
     ROS_INFO("The base failed to move forward 1 meter for some reason");
 
-  // Sleep for 5 seconds
+  // Sleep for1 second
   ros::Duration(5).sleep();
+
+  while(1) {}
 
   return 0;
 }
