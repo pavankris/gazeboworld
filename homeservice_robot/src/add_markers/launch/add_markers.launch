@@ -2,7 +2,8 @@
 
 <launch>
 
- <!-- The pick objects node -->
+ <!-- The add markers node -->
+  <rosparam command="load" file="$(find add_markers)/param/robot_movement.yaml" />
   <node name="add_markers" type="add_markers" pkg="add_markers" output="screen"/>
 
 </launch>

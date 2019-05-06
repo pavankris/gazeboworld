@@ -3,6 +3,7 @@
 <launch>
 
  <!-- The pick objects node -->
-  <node name="pick_objects" type="pick_objects" pkg="pick_objects" output="screen"/>
+ <rosparam command="load" file="$(find pick_objects)/param/robot_movement.yaml" />
+ <node name="pick_objects" type="pick_objects" pkg="pick_objects" output="screen"/>
 
 </launch>
