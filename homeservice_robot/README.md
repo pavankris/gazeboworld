@@ -1,3 +1,5 @@
+![out](https://user-images.githubusercontent.com/1688726/57280362-efdcb880-705d-11e9-9e8c-4750eecf77f4.gif)
+
 ## Installation Instructions
 
 1. mkdir src; cd src
