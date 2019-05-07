@@ -5,6 +5,7 @@
 #include <actionlib_msgs/GoalStatus.h>
 #include <vector>
 #include <math.h>
+#include <stdlib.h>
 
 class AddMarkers
 {
@@ -47,9 +48,9 @@ public:
     marker.scale.y = 0.5;
     marker.scale.z = 0.5;
 
-    marker.color.r = 1.0f;
-    marker.color.g = 1.0f;
-    marker.color.b = 0.0f;
+    marker.color.r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+    marker.color.g = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+    marker.color.b = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
     marker.color.a = 1.0;
 
     marker.lifetime = ros::Duration(30);
@@ -115,13 +116,16 @@ public:
         // In Dropoff zone
         ROS_INFO("Droping off markers");
         for (int i=0;i<publishedMarkers.size();i++) {
+          ROS_INFO("Droping marker : %d", i);
           visualization_msgs::Marker marker = publishedMarkers[i];
-          marker.pose.position.x = dropOff[0] + i * 0.01;
-          marker.pose.position.y = dropOff[1] + i * 0.01;
+          marker.action = visualization_msgs::Marker::ADD;
+          marker.pose.position.x = dropOff[0] + i * 0.1;
+          marker.pose.position.y = dropOff[1] + i * 0.1;
           marker.lifetime = ros::Duration(5);
           marker_pub->publish(marker);
         }
       } else {
+        ROS_INFO("Removing markers");
         visualization_msgs::Marker marker = publishedMarkers.back();
         marker.action = visualization_msgs::Marker::DELETE;
         marker_pub->publish(marker);

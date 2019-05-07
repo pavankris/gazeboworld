@@ -67,12 +67,13 @@ public:
   }
 
   void processMarker(const visualization_msgs::Marker marker) {
+    if (markersCollected.size() == numOfObjects) {
+      ROS_INFO("Dropping markers");
+      return;
+    }
     if (marker.action == visualization_msgs::Marker::DELETE) {
       ROS_INFO("Marker picked up");
       return;
-    }
-    if (markersCollected.size() == numOfObjects) {
-      ROS_INFO("Dropping markers");
     }
     ROS_INFO("Marker added %f %f", marker.pose.position.x, marker.pose.position.y);
     if(sendGoalToRobot(marker.pose.position.x, marker.pose.position.y, marker.id)) {
@@ -104,35 +105,6 @@ int main(int argc, char** argv){
   PickObjects po(&ac, &goalstatus_pub, numOfObjects, dropOff);
   ros::Subscriber sub1 = n.subscribe("visualization_marker", 10, 
     &PickObjects::processMarker, &po);
-
-  /*po.moveToTarget(x, y);
-  // Wait an infinite time for the results
-  ac.waitForResult();
-
-  // Check if the robot reached its goal
-  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-    ROS_INFO("Hooray, the base moved 2 meter backward");
-  else
-    ROS_INFO("The base failed to move 2 meter backward for some reason");
-
-  // Sleep for1 second
-  ros::Duration(1).sleep();
-  x = -1.03;
-  y = 3.1;
-
-  po.moveToTarget(x, y);
-
-  // Wait an infinite time for the results
-  ac.waitForResult();
-
-  // Check if the robot reached its goal
-  if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-    ROS_INFO("Hooray, the base moved 1 meter forward again");
-  else
-    ROS_INFO("The base failed to move forward 1 meter for some reason");
-
-  // Sleep for1 second
-  ros::Duration(5).sleep();*/
 
   ros::spin();
 
