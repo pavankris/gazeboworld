@@ -1,12 +1,24 @@
+# Home Service Robot
 ![out](https://user-images.githubusercontent.com/1688726/57280362-efdcb880-705d-11e9-9e8c-4750eecf77f4.gif)
 
-## Installation Instructions
+### Packages Used
+
+ > [turtlebot_gazebo](https://github.com/turtlebot/turtlebot_simulator) 
+- Launches the turtlebot inside the specified world file. Turtlebot is equipped with camera and also provides a node to convert camera into laser output. 
+- Provides amcl(Monte carlo localization) for localizing the robot which accepts the map file
+- It also launches move_base which will launch path planner 
+
+ > [rviz](https://github.com/ros-visualization/rviz)
+ - Robot visualization, that can visualize the robot state. It is launched with the predefined config from [view_navigation](https://github.com/turtlebot/turtlebot_interactions)
+
+[rqt_graph](https://github.com/pavankris/gazeboworld/tree/master/homeservice_robot/rosgraph.png)
+
+### Installation Instructions
 
 1. mkdir src; cd src
 2. catkin_init_workspace .
 3. git clone https://github.com/turtlebot/turtlebot_simulator
 4. git clone https://github.com/turtlebot/turtlebot_interactions
-5. git clone https://github.com/turtlebot/turtlebot_interactions
 6. cd ..;catkin_create_pkg pick_objects move_base_msgs actionlib roscpp
 7. cd ..;catkin_create_pkg add_markers visualization_msgs roscpp
 8. scripts/home_service.sh
