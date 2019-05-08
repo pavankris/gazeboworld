@@ -11,7 +11,8 @@
  > [rviz](https://github.com/ros-visualization/rviz)
  - Robot visualization, that can visualize the robot state. It is launched with the predefined config from [view_navigation](https://github.com/turtlebot/turtlebot_interactions)
 
-[rqt_graph](https://github.com/pavankris/gazeboworld/tree/master/homeservice_robot/rosgraph.png)
+> rqt_graph
+![out](https://github.com/pavankris/gazeboworld/blob/master/homeservice_robot/rosgraph.png)
 
 ### Installation Instructions
 
